@@ -1,6 +1,6 @@
 # Ridgepole::Multidb::Task
 
-TODO: Write a gem description
+Define task to apply ridgepole used multidb & multischemafiles for Rails
 
 ## Installation
 
@@ -20,7 +20,35 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+[4] pry(main)> ActiveRecord::Base.configurations.keys
+=> ["hoge", "fuga"]
+```
+
+If your ar configuration is multi db, define schema files followers.
+
+```
+.
+└── db
+    └── schema
+        ├── fuga
+        │   ├── c_schema.rb
+        │   └── d_schema.rb
+        └── hoge
+            ├── a_schema.rb
+            └── b_schema.rb
+```
+
+define task followers
+
+```
+rake db:schema:apply                    # Apply schema files to databases
+rake db:schema:apply_dry_run            # Dry run apply schema
+rake db:schema:diff                     # Show diff between schema file and table configuration
+rake db:schema:merge                    # Merge schema file and table configutation
+rake db:schema:merge_dry_run            # Dry run merge
+```
+
 
 ## Contributing
 
